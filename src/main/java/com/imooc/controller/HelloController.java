@@ -13,7 +13,7 @@ public class HelloController {
      @Autowired
     private Resource resource;
 
-     @RequestMapping("/hello")
+     @RequestMapping("hello")
     public  Object hello(){
             return  "springboot";
     }

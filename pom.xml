@@ -66,6 +66,19 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- 引入 thymeleaf 模板依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- 严格的标签 -->
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.22</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

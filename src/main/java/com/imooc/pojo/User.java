@@ -2,28 +2,24 @@ package com.imooc.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import java.util.Date;
 
-
-@JsonIgnoreProperties
 public class User {
-	
+
 	private String name;
 
+	@JsonIgnore
 	private String password;
-
+	private Integer age;
 	@JsonFormat(pattern="yyyy-MM-dd hh:mm:ss a", locale="zh", timezone="GMT+8")
 	private Date birthday;
-	@JsonIgnore
-	private Integer age;
 
-	
-	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@JsonInclude(Include.NON_NULL)
 	private String desc;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -42,7 +38,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Date getBirthday(Date date) {
+	public Date getBirthday() {
 		return birthday;
 	}
 	public void setBirthday(Date birthday) {
