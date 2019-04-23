@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Table(name = "sys_user")
 public class SysUser {
     @Id
-    private Integer id;
+    private String id;
 
     private String name;
 
@@ -14,14 +14,14 @@ public class SysUser {
     /**
      * @return id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

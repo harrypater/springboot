@@ -18,27 +18,40 @@ public class MyBatisCRUDController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
 	private Sid sid;
 	
-	@RequestMapping("/saveUser")
+	@RequestMapping("/saveUser")                         // 增加操作
 	public IMoocJSONResult saveUser() throws Exception {
 		
-		String userId = sid.nextShort();
-		System.out.println(userId);
-		Random rand =new Random(25);
+		String userId =sid.nextShort();
+
+		Random rand =new Random();    // seed
 		int i;
 		i=rand.nextInt(100);
 
 		SysUser user = new SysUser();
-		user.setId(i);
+		user.setId(userId);
 		user.setName("zeep");
 		user.setAge(i);
 		userService.saveUser(user);
 		
 		return IMoocJSONResult.ok("保存成功");
 	}
-	
 
+
+	@RequestMapping("/updateUser")                 // 更新操作
+	public IMoocJSONResult updateUser() {
+
+		SysUser user = new SysUser();
+		user.setId("2");
+		user.setName("toms-new");
+		user.setAge(66);
+
+		userService.updateUser(user);
+
+		return IMoocJSONResult.ok("保存成功");
+	}
 	
 	@RequestMapping("/deleteUser")
 	public IMoocJSONResult deleteUser(String userId) {
@@ -62,7 +75,7 @@ public class MyBatisCRUDController {
 			page = 1;
 		}
 
-		int pageSize = 10;
+		int pageSize =2;
 		
 		SysUser user = new SysUser();
 //		user.setNickname("lee");
