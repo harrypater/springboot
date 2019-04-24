@@ -8,4 +8,5 @@ import java.util.List;
 public interface SysUserMapperCustom extends MyMapper<SysUser> {
 
      List<SysUser> queryUserSimplyInfoById(String id);
+
 }

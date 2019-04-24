@@ -26,7 +26,7 @@ public class MyBatisCRUDController {
 		
 		String userId =sid.nextShort();
 
-		Random rand =new Random();    // seed
+		Random rand =new Random();     // seed
 		int i;
 		i=rand.nextInt(100);
 
@@ -40,7 +40,7 @@ public class MyBatisCRUDController {
 	}
 
 
-	@RequestMapping("/updateUser")                 // 更新操作
+	@RequestMapping("/updateUser")                   // 更新操作
 	public IMoocJSONResult updateUser() {
 
 		SysUser user = new SysUser();
@@ -54,7 +54,7 @@ public class MyBatisCRUDController {
 	}
 	
 	@RequestMapping("/deleteUser")
-	public IMoocJSONResult deleteUser(String userId) {
+	public IMoocJSONResult deleteUser(String userId) {                  	 //删除操作
 		
 		userService.deleteUser(userId);
 		
@@ -62,13 +62,13 @@ public class MyBatisCRUDController {
 	}
 	
 	@RequestMapping("/queryUserById")
-	public IMoocJSONResult queryUserById(String userId) {
+	public IMoocJSONResult queryUserById(String userId) {                     //id查询
 		
 		return IMoocJSONResult.ok(userService.queryUserById(userId));
 	}
 	
 
-	@RequestMapping("/queryUserListPaged")
+	@RequestMapping("/queryUserListPaged")                   	            //分页查询
 	public IMoocJSONResult queryUserListPaged(Integer page) {
 		
 		if (page == null) {
@@ -85,10 +85,27 @@ public class MyBatisCRUDController {
 		return IMoocJSONResult.ok(userList);
 	}
 	
-	@RequestMapping("/queryUserByIdCustom")
+	@RequestMapping("/queryUserByIdCustom")                               //自定义id查询
 	public IMoocJSONResult queryUserByIdCustom(String userId) {
 		
 		return IMoocJSONResult.ok(userService.queryUserByIdCustom(userId));
 	}
+
+	@RequestMapping("/saveUserTransactional")                            //事物回滚    	@Transactional(propagation = Propagation.REQUIRED)
+	public IMoocJSONResult saveUserTransactional() {
+
+		String userId = sid.nextShort();
+
+		SysUser user = new SysUser();
+		user.setId(userId);
+		user.setName("事物回滚");
+		user.setAge(23);
+
+		userService.saveUserTransactional(user);
+
+		return IMoocJSONResult.ok("保存成功");
+	}
+
+
 
 }
