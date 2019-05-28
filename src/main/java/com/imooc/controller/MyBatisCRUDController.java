@@ -32,7 +32,7 @@ public class MyBatisCRUDController {
 
 		SysUser user = new SysUser();
 		user.setId(userId);
-		user.setName("zeep");
+		user.setName("");
 		user.setAge(i);
 		userService.saveUser(user);
 		
@@ -45,7 +45,7 @@ public class MyBatisCRUDController {
 
 		SysUser user = new SysUser();
 		user.setId("2");
-		user.setName("toms-new");
+		user.setName("toms-new是的");
 		user.setAge(66);
 
 		userService.updateUser(user);
